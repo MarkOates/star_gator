@@ -33,12 +33,13 @@ bin/star_gator: programs/star_gator.cpp $(OBJECTS)
 
 
 obj/%.o: src/%.cpp
+	@mkdir -p $(@D)
 	g++ -c -std=gnu++11 $< -o $@ -I$(ALLEGRO_FLARE_DIR)/include -I$(ALLEGRO_DIR)/include -I./include
 
 
 
 clean:
-	-rm $(OBJECTS)
+	-rm -rdf obj/
 	-rm bin/star_gator
 
 

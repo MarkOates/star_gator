@@ -25,7 +25,7 @@ public:
    void _draw();
 
    virtual void draw();
-   
+
    void inspect();
 };
 

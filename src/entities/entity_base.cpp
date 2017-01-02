@@ -1,7 +1,7 @@
 
 
 
-#include <star_gator/entity3d.h>
+#include <star_gator/entities/entity_base.h>
 
 
 

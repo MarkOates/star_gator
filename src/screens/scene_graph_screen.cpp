@@ -1,7 +1,7 @@
 
 
 
-#include <star_gator/scene_graph_screen.h>
+#include <star_gator/screens/scene_graph_screen.h>
 
 
 

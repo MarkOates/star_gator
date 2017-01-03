@@ -5,7 +5,7 @@
 
 
 
-Entity3D::Entity3D(ElementID *parent, std::string name, Model3D *model, ALLEGRO_BITMAP *texture)
+EntityBase::EntityBase(ElementID *parent, std::string name, Model3D *model, ALLEGRO_BITMAP *texture)
    : ElementID(parent)
    , name(name)
    , place()
@@ -22,17 +22,17 @@ Entity3D::Entity3D(ElementID *parent, std::string name, Model3D *model, ALLEGRO_
 
 
 
-void Entity3D::_draw()
+void EntityBase::_draw()
 {
    if (renders_self || renders_children) place.start_transform();
-   if (renders_children) for (auto &child : get_children<Entity3D>()) child->_draw();
+   if (renders_children) for (auto &child : get_children<EntityBase>()) child->_draw();
    if (renders_self) draw();
    if (renders_self || renders_children) place.restore_transform();
 }
 
 
 
-void Entity3D::draw()
+void EntityBase::draw()
 {
    if (!model) return;
    model->set_texture(texture);
@@ -41,10 +41,10 @@ void Entity3D::draw()
 
 
 
-void Entity3D::inspect()
+void EntityBase::inspect()
 {
    std::cout << num_children() << std::endl;
-   for (auto &e : get_flat_list_of_descendants<Entity3D>())
+   for (auto &e : get_flat_list_of_descendants<EntityBase>())
       std::cout << " - " << e << " " << e->get("name") << " " << e->get_id() << std::endl;
 }
 

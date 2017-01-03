@@ -13,19 +13,19 @@ public:
    Project(Display *display) : SceneGraphScreen(display)
    {
       // create the camera
-      Entity3D *camera = new Entity3D(this, "camera");
+      EntityBase *camera = new EntityBase(this, "camera");
       camera->place.anchor = vec3d(0, 0, 5);
       camera->velocity.rotation.y = 0.001;
       camera->renders_self = false;
       camera->renders_children = false;
 
       // create the coin in the middle of the world
-      new Entity3D(this, "coin", Framework::model("coin_ring-01.obj"));
+      new EntityBase(this, "coin", Framework::model("coin_ring-01.obj"));
 
       // create the random coins spinning around the room
       for (unsigned i=0; i<10; i++)
       {
-         Entity3D *e = new Entity3D(this, "coin", Framework::model("coin_ring-01.obj"));
+         EntityBase *e = new EntityBase(this, "coin", Framework::model("coin_ring-01.obj"));
          e->texture = Framework::bitmap("uv.png");
          e->place.position.x = random_float(-2, 2);
          e->place.position.y = random_float(-2, 2);

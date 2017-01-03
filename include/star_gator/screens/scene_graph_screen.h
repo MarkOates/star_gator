@@ -8,7 +8,7 @@
 
 
 
-class SceneGraphScreen : public Screen, public Entity3D
+class SceneGraphScreen : public Screen, public EntityBase
 {
 private:
    void _set_projection(ALLEGRO_BITMAP *bitmap, ALLEGRO_TRANSFORM *t);

@@ -9,7 +9,7 @@
 
 
 
-class Entity3D : public ElementID
+class EntityBase : public ElementID
 {
 public:
    std::string name;
@@ -20,7 +20,7 @@ public:
 
    bool renders_self, renders_children;
 
-   Entity3D(ElementID *parent, std::string name, Model3D *model=nullptr, ALLEGRO_BITMAP *texture=nullptr);
+   EntityBase(ElementID *parent, std::string name, Model3D *model=nullptr, ALLEGRO_BITMAP *texture=nullptr);
 
    void _draw();
 

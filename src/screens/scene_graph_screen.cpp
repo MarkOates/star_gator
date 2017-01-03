@@ -7,7 +7,7 @@
 
 SceneGraphScreen::SceneGraphScreen(Display *display)
    : Screen(display)
-   , Entity3D(nullptr, "root")
+   , EntityBase(nullptr, "root")
 {}
 
 
@@ -32,7 +32,7 @@ void SceneGraphScreen::_set_projection(ALLEGRO_BITMAP *bitmap, ALLEGRO_TRANSFORM
 void SceneGraphScreen::_update_scene()
 {
    Screen::primary_timer_func();
-   for (auto &e : this->get_flat_list_of_descendants<Entity3D>()) e->place += e->velocity;
+   for (auto &e : this->get_flat_list_of_descendants<EntityBase>()) e->place += e->velocity;
 }
 
 
@@ -45,7 +45,7 @@ void SceneGraphScreen::_draw_scene()
    al_clear_depth_buffer(1);
 
    ALLEGRO_TRANSFORM t;
-   Entity3D *camera = static_cast<Entity3D *>(this->find_first("name", "camera"));
+   EntityBase *camera = static_cast<EntityBase *>(this->find_first("name", "camera"));
    if (camera) camera->place.build_reverse_transform(&t);
    else al_identity_transform(&t);
    _set_projection(backbuffer_sub_bitmap, &t);

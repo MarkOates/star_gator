@@ -45,7 +45,7 @@ void SceneGraphScreen::_draw_scene()
    al_clear_depth_buffer(1);
 
    ALLEGRO_TRANSFORM t;
-   EntityBase *camera = static_cast<EntityBase *>(this->find_first("name", "camera"));
+   EntityBase *camera = static_cast<EntityBase *>(this->find_first("type", "camera"));
    if (camera) camera->place.build_reverse_transform(&t);
    else al_identity_transform(&t);
    _set_projection(backbuffer_sub_bitmap, &t);

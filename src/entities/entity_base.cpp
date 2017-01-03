@@ -5,9 +5,8 @@
 
 
 
-EntityBase::EntityBase(ElementID *parent, std::string name, Model3D *model, ALLEGRO_BITMAP *texture)
+EntityBase::EntityBase(ElementID *parent, std::string type, Model3D *model, ALLEGRO_BITMAP *texture)
    : ElementID(parent)
-   , name(name)
    , place()
    , velocity()
    , model(model)
@@ -15,7 +14,7 @@ EntityBase::EntityBase(ElementID *parent, std::string name, Model3D *model, ALLE
    , renders_self(true)
    , renders_children(true)
 {
-   Attributes::bind("name", &name);
+   set("type", type);
    velocity.align = vec3d(0, 0, 0);
    velocity.scale = vec3d(0, 0, 0);
 }
@@ -45,7 +44,7 @@ void EntityBase::inspect()
 {
    std::cout << num_children() << std::endl;
    for (auto &e : get_flat_list_of_descendants<EntityBase>())
-      std::cout << " - " << e << " " << e->get("name") << " " << e->get_id() << std::endl;
+      std::cout << " - " << e << " " << e->get("type") << " " << e->get_id() << std::endl;
 }
 
 

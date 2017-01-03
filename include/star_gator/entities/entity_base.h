@@ -12,7 +12,6 @@
 class EntityBase : public ElementID
 {
 public:
-   std::string name;
    placement3d place;
    placement3d velocity;
    Model3D *model;
@@ -20,7 +19,7 @@ public:
 
    bool renders_self, renders_children;
 
-   EntityBase(ElementID *parent, std::string name, Model3D *model=nullptr, ALLEGRO_BITMAP *texture=nullptr);
+   EntityBase(ElementID *parent, std::string type, Model3D *model=nullptr, ALLEGRO_BITMAP *texture=nullptr);
 
    void _draw();
 

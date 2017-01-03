@@ -41,7 +41,7 @@ public:
 int main(int argc, char **argv)
 {
    Framework::initialize();
-   Display *display = Framework::create_display(800, 600, ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+   Display *display = Framework::create_display(1280, 720, ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
    Project *project = new Project(display);
    Framework::run_loop();
    return 0;
